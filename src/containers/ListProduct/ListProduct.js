@@ -28,15 +28,15 @@ export class ListProduct extends Component {
   render() {
     const toolbarBoton = (
       <>
-        <Button label="New" className="mr-2" onClick={this.showDialogNew} />
-        <Button label="Update" className="mr-2" onClick={this.showDialogEdit} />
-        <Button label="Delete" className="p-button-success mr-2" />
+        <Button label="Nuevo" className="mr-2" onClick={this.showDialogNew} />
+        <Button label="Actualizar" className="mr-2" onClick={this.showDialogEdit} />
+        <Button label="Borrar" className="p-button-success mr-2" />
       </>
     );
     return (
       <div style={{ width: "80%", margin: "0 auto", marginTop: "20px" }}>
         <Toolbar left={toolbarBoton}></Toolbar>
-        <Panel header="Products">
+        <Panel header="Productos">
           <DataTable
             value={this.state.products}
             dataKey="id"
@@ -53,13 +53,13 @@ export class ListProduct extends Component {
               headerStyle={{ width: "2rem" }}
             ></Column>
             <Column field="id" header="Id"></Column>
-            <Column field="name" header="Name"></Column>
-            <Column field="description" header="Description"></Column>
+            <Column field="name" header="Nombre"></Column>
+            <Column field="description" header="Descripcion"></Column>
             <Column field="imagen" header="Imagen"></Column>
           </DataTable>
         </Panel>
         <Dialog
-          header={"Edit Product"}
+          header={"Editar Producto"}
           modal="true"
           visible={this.state.visibleEdit}
           onHide={this.hideDialog}
