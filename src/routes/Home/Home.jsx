@@ -6,8 +6,13 @@ import './Home.scss'
 const Home = () => {
     return (
       <aside>
-        <ListProduct />
-        <ProductList />
+      
+        <div className="listProduct">
+          <ListProduct />
+        </div>
+        <div className="productList">
+          <ProductList />
+        </div>
       </aside>
     );
 }

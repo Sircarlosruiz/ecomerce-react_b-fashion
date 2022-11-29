@@ -19,6 +19,7 @@ export class ListProduct extends Component {
     this.productServices = new ProductServices();
   }
 
+
   componentDidMount() {
     this.productServices
       .getAll()
@@ -70,6 +71,7 @@ export class ListProduct extends Component {
     );
   }
 
+
   showDialogNew = () => {
     this.setState({
       visibleEdit: true,
@@ -88,3 +90,4 @@ export class ListProduct extends Component {
     });
   };
 }
+console.log(ProductServices);
