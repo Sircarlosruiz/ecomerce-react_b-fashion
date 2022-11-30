@@ -6,7 +6,6 @@ import './Home.scss'
 const Home = () => {
     return (
       <aside>
-      
         <div className="listProduct">
           <ListProduct />
         </div>

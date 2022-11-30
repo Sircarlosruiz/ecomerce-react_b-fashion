@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProductServices from "../../service/ProductServices";
+import ProductContext from "../../context/ProductContext";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Panel } from "primereact/panel";
@@ -16,7 +16,7 @@ export class ListProduct extends Component {
       selectedProduct: null,
       visibleEdit: false,
     };
-    this.productServices = new ProductServices();
+    this.productServices = new ProductContext();
   }
 
 
@@ -90,4 +90,4 @@ export class ListProduct extends Component {
     });
   };
 }
-console.log(ProductServices);
+console.log(ProductContext);

@@ -1,51 +1,92 @@
 
-/* DataTableDemo.css */
-.datatable-crud-demo{
-    margin-top: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* DataScrollerDemo.css */
 
-    .card{
-        width: 100%;
-    }
+.datascroller-demo .product-name {
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-.datatable-crud-demo .table-header {
+.datascroller-demo .product-description {
+    margin: 0 0 1rem 0;
+}
+
+.datascroller-demo .product-category-icon {
+    vertical-align: middle;
+    margin-right: .5rem;
+}
+
+.datascroller-demo .product-category {
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.datascroller-demo .product-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
 }
-@media screen and (max-width: 960px) {
-    .datatable-crud-demo .table-header {
-        align-items: flex-start;
-    }
-}
-.datatable-crud-demo .product-image {
-    width: 100px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-.datatable-crud-demo .p-dialog .product-image {
+
+.datascroller-demo .product-item img {
     width: 150px;
-    margin: 0 auto 2rem auto;
-    display: block;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-right: 2rem;
 }
-.datatable-crud-demo .confirmation-content {
+
+.datascroller-demo .product-item .product-detail {
+    flex: 1 1 0;
+}
+
+.datascroller-demo .product-item .p-rating {
+    margin: 0 0 .5rem 0;
+}
+
+.datascroller-demo .product-item .product-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    align-self: flex-end;
+}
+
+.datascroller-demo .product-item .product-action {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
-@media screen and (max-width: 960px) {
-    .datatable-crud-demo .p-toolbar {
-        flex-wrap: wrap;
+
+.datascroller-demo .product-item .p-button {
+    margin-bottom: .5rem;
+}
+
+@media screen and (max-width: 576px) {
+    .datascroller-demo .product-item {
+        flex-direction: column;
+        align-items: center;
     }
-    .datatable-crud-demo .p-toolbar .p-button {
-        margin-bottom: 0.25rem;
+
+    .datascroller-demo .product-item img {
+        width: 75%;
+        margin: 2rem 0;
     }
-    .datatable-crud-demo .table-header {
+
+    .datascroller-demo .product-item .product-detail {
+        text-align: center;
+    }
+
+    .datascroller-demo .product-item .product-price {
+        align-self: center;
+    }
+
+    .datascroller-demo .product-item .product-action {
+        display: flex;
         flex-direction: column;
     }
-    .datatable-crud-demo .table-header .p-input-icon-left, .datatable-crud-demo .table-header input {
+
+    .datascroller-demo .product-item .product-action {
+        margin-top: 2rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
     }
 }
+                 
