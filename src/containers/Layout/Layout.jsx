@@ -5,6 +5,7 @@ const Layout = ({children}) => {
         <div className='Layout'>
         <Header/>
             {children}
+            
         </div>
     );
 }
