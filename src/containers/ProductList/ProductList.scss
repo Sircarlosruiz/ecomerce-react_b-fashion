@@ -5,6 +5,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .card{
+        width: 100%;
+    }
 }
 
 .datatable-crud-demo .table-header {

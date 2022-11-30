@@ -226,16 +226,16 @@ const ProductList = () => {
     }
 
     const imageBodyTemplate = (rowData) => {
-        return <img src={`images/product/${rowData.image}`} onError={(e) => e.target.src=`${item.image}`} alt={rowData.image} className="product-image" />
+        return <img src={`${item.image}`} onError={(e) => e.target.src=`${item.image}`} alt={rowData.image} className="product-image" />
     }
 
     const priceBodyTemplate = (rowData) => {
         return formatCurrency(rowData.price);
     }
 
-    const ratingBodyTemplate = (rowData) => {
-        return <Rating value={rowData.rating} readOnly cancel={false} />;
-    }
+    // const ratingBodyTemplate = (rowData) => {
+    //     return <Rating value={rowData.rating} readOnly cancel={false} />;
+    // }
 
     const statusBodyTemplate = (rowData) => {
         return <span className={`product-badge status-${rowData.inventoryStatus.toLowerCase()}`}>{rowData.inventoryStatus}</span>;
@@ -309,46 +309,39 @@ const ProductList = () => {
               headerStyle={{ width: "3rem" }}
               exportable={false}
             ></Column>
-            <Column
+            {/* <Column
               field="code"
               header="Code"
               sortable
               style={{ minWidth: "12rem" }}
-            ></Column>
+            ></Column> */}
             <Column
               field="name"
-              header="Name"
+              header="Nombre"
               sortable
-              style={{ minWidth: "16rem" }}
+              style={{ minWidth: "10rem" }}
             ></Column>
             <Column
               field="image"
-              header="Image"
+              header="Imagen"
               body={imageBodyTemplate}
             ></Column>
             <Column
               field="price"
-              header="Price"
+              header="Precio"
               body={priceBodyTemplate}
               sortable
               style={{ minWidth: "8rem" }}
             ></Column>
             <Column
               field="category"
-              header="Category"
+              header="Categoria"
               sortable
               style={{ minWidth: "10rem" }}
             ></Column>
             <Column
-              field="rating"
-              header="Reviews"
-              body={ratingBodyTemplate}
-              sortable
-              style={{ minWidth: "12rem" }}
-            ></Column>
-            <Column
               field="inventoryStatus"
-              header="Status"
+              header="Estado"
               body={statusBodyTemplate}
               sortable
               style={{ minWidth: "12rem" }}
