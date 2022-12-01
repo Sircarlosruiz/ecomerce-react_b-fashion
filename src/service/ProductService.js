@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export class ProductService {
 
     getProductsSmall() {
@@ -10,5 +12,9 @@ export class ProductService {
 
     getProductsWithOrdersSmall() {
         return fetch('data/products-orders-small.json').then(res => res.json()).then(d => d.data);
+    }
+
+    getAll(){
+        return axios.get(URL + "/list").then(res => res.data);
     }
 }
