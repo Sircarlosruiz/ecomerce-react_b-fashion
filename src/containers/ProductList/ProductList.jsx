@@ -21,18 +21,11 @@ const ProductList = () => {
 
   const API = "http://localhost:8181/api/product";
   const listProducts = useGetProducts(API);
-//   console.table(listProducts);
+  console.table(listProducts);
   const productService = new ProductService();
 
   useEffect(() => {
-    // debugger;
-    setProducts(listProducts);
-    // debugger;
-    console.table(products);
-    // debugger;
-    console.log(`hola ${products}`);
-    // debugger;
-    // productService.getProducts().then((data) => setProducts(data));
+    productService.getProducts().then((data) => setProducts(data));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onSortChange = (event) => {
