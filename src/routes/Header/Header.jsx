@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.scss'
 import Logo from '../../assets/logo.png'
-import {AiOutlineShoppingCart} from "react-icons/ai";
+import {BiCart} from "react-icons/bi";
 
 const Header = () => {
   return (
@@ -33,7 +33,7 @@ const Header = () => {
         <ul>
           <li>ceruiz@uamv.edu.ni</li>
           <li>
-            <img src={AiOutlineShoppingCart} alt="shopping cart" />
+            <img src={<BiCart/>} alt="shopping cart" />
           </li>
         </ul>
       </div>
