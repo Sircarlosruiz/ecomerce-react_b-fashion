@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const API = 'http://localhost:8181/api/product';
 export class ProductService {
 
     getProductsSmall() {
@@ -15,6 +16,6 @@ export class ProductService {
     }
 
     getAll(){
-        return axios.get(URL + "/list").then(res => res.data);
+        return axios.get(API + "/list").then(res => res.data);
     }
 }
