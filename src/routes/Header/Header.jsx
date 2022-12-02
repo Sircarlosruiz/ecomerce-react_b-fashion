@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useContext, useState}from 'react'
 import './Header.scss'
 import Logo from '../../assets/logo.png'
-import {BiCart} from "react-icons/bi";
+import AppContext from '../../context/AppContext';
+import {BiCart, BiCircle} from "react-icons/bi";
 
 const Header = () => {
+  const [toggle, setToggle] = useState(false);
+  const {state} = useContext(AppContext)
+
+
   return (
     <nav className="nav-bar">
       <div className="navbar-left">
@@ -33,10 +38,17 @@ const Header = () => {
         <ul>
           <li>ceruiz@uamv.edu.ni</li>
           <li>
-            <BiCart className='icon-cart'/>
+            <div className="icons" onClick={setToggle(!toggle)}>
+              <BiCart className="icon-cart" />
+              <BiCircle className='circle-cart'/>
+            </div>
+            <div className='number-icon'>
+              {state.cart.length > 0 ? <div>{state.cart.length}</div> : null}
+            </div>
           </li>
         </ul>
       </div>
+      {toggle && <MyOrder/>}
     </nav>
   );
 }

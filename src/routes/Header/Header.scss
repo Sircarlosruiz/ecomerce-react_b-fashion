@@ -1,63 +1,77 @@
-nav{
+nav {
+  display: flex;
+  width: 100vw;
+  height: 10vh;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.5rem;
+  // border: 1px solid red;
+
+  .navbar-left {
     display: flex;
-    width: 100vw;
-    height: 10vh;
-    justify-content: space-between;
     align-items: center;
-    margin: 0 .5rem;
-    // border: 1px solid red;
 
-
-    .navbar-left{
-        display: flex;
-        align-items: center;
-
-        .nav-logo{
-            height: 5rem;
-        }
-
-        ul{
-            display: flex;
-            padding: 0;
-            list-style-type: none;
-            
-            li{
-                margin: 0 .5rem;
-
-                a{
-                    text-decoration: none;
-                    color: black;
-                }
-
-                a:hover{
-                    color: #5a005a;
-                    font-weight: bold;
-                }
-            }
-        }
+    .nav-logo {
+      height: 5rem;
     }
 
-    .navbar-right{
-        width: 30%;
-        justify-content: space-between;
-        ul{
-            display: flex;
-            align-items: center;
+    ul {
+      display: flex;
+      padding: 0;
+      list-style-type: none;
 
-            li{
-                list-style-type: none;
+      li {
+        margin: 0 0.5rem;
 
-                .icon-cart{
-                    width: 4rem;
-                    height: 2rem;
-                }
-            }
+        a {
+          text-decoration: none;
+          color: black;
+        }
 
-            li:hover{
-                color: #5a005a;
-                font-weight: bold;
-            }
-
-        } 
+        a:hover {
+          color: #5a005a;
+          font-weight: bold;
+        }
+      }
     }
+  }
+
+  .navbar-right {
+    width: 30%;
+    justify-content: space-between;
+    ul {
+      display: flex;
+      align-items: center;
+
+      li {
+        list-style-type: none;
+
+        .icons {        
+
+        .circle-cart{
+            position: absolute;
+            color: #5a005a;
+            right: 25px;
+            width: 1.2rem;
+            height: 1.1rem;
+        }
+          .icon-cart {
+            width: 4rem;
+            height: 2rem;
+          }
+        }
+      }
+
+      li:hover {
+        color: #5a005a;
+        font-weight: bold;
+      }
+
+    }
+      .number-icon{
+        position: absolute;
+        right: 29px;
+        top: 12px;
+      }
+  }
 }

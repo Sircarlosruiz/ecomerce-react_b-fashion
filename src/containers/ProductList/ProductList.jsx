@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { DataScroller } from "primereact/datascroller";
 import { Button } from "primereact/button";
-import { Rating } from "primereact/rating";
 import { ProductService } from "../../service/ProductService";
 import "./ProductList.scss";
 import ModalContainer from "../ModalContainer/modal-container.component";
@@ -40,7 +39,6 @@ const ProductList = () => {
         <div className="product-detail">
           <div className="product-name">{data.name}</div>
           <div className="product-description">{data.description}</div>
-          <Rating value={data.rating} readOnly cancel={false}></Rating>
           <i className="pi pi-tag product-category-icon"></i>
           <span className="product-category">{data.category}</span>
         </div>
@@ -76,7 +74,7 @@ const ProductList = () => {
       <ModalContainer
         show={showCardDropDownModal}
         modalRef={CardDropDownModalRef}
-        component={<AddProduct />}
+        component={<AddProduct products={products} />}
         className={"modal-container cardDropDown"}
       />
     </div>

@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AppContext from '../../context/AppContext';
+import { Button } from "primereact/button";
 import './AddProduct.scss'
+import ItemProduct from './Item-Product';
 
-const AddProduct = () => {
+const AddProduct = ({products, hideModal}) => {
+    const {addToCart} = useContext(AppContext);
+
+    const handleClick = item =>{
+        addToCart(item);
+    };
+    console.table(products);
     return (
-        <>oli</>
+      <div className="form-add-product">
+        {Object.entries(products).map((item, idx) => (
+          <ItemProduct key={idx} products={item} />
+        ))}
+        <Button
+          icon="pi pi-shopping-cart"
+          label="Add to Cart"
+          onClick={() => handleClick(products)}
+        ></Button>
+      </div>
     );
 }
 

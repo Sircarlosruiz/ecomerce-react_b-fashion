@@ -1,3 +1,38 @@
+.datascroller-demo{
+
+    .modal-container {
+		div {
+			padding-bottom: 0;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+		}
+
+		width: 280px;
+		padding: 0 1rem;
+		padding-bottom: 0.5rem;
+		border: 1.5px solid rgba(189, 189, 189, 0.681);
+		border-radius: 16px;
+		position: absolute;
+		display: flex;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+		background-color: white;
+		z-index: 1;
+	}
+
+    .cardDropDown{
+		aside{
+			padding-bottom: 0;
+			width: 30vw;
+		}
+		
+		top: 5.3rem;
+		right: 28rem;
+		flex-flow: column;
+		width: auto;
+	}
+}
+
 
 /* DataScrollerDemo.css */
 
