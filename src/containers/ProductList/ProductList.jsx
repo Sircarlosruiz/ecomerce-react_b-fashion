@@ -1,62 +1,86 @@
-
-import React, { useState, useEffect } from 'react';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { ProductService } from '../../service/ProductService';
-import { Button } from 'primereact/button';
-import { Rating } from 'primereact/rating';
-import useGetProducts from '../../hooks/useGetProducts'
-import './ProductList.scss';
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { DataScroller } from "primereact/datascroller";
+import { Button } from "primereact/button";
+import { Rating } from "primereact/rating";
+import { ProductService } from "../../service/ProductService";
+import "./ProductList.scss";
+import ModalContainer from "../ModalContainer/modal-container.component";
+import AddProduct from "../../components/Add-Product/AddProduct";
+import { useOnClickOutside } from "../../components/Utils/helpers";
 
 const ProductList = () => {
-    const [products, setProducts] = useState([]);
-    const API = 'http://localhost:8181/api/product'
-    const productList = useGetProducts(API);
-    // console.log(`hola ${productList[0]}`);
-    const productService = new ProductService();
+  const [products, setProducts] = useState([]);
+  const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
+  const productService = new ProductService();
 
-    // console.log(productService.getProductsSmall());
+  const CardDropDownModalRef = useRef();
 
-    useEffect(() => {
-        productService.getAll().then(data => setProducts(data));
-        // setProducts(productList);
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    productService.getAll().then((data) => setProducts(data));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const formatCurrency = (value) => {
-        return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    }
+  const hideCardDropDown = useCallback(({ target }) => {
+    if (target.closest(".link")) return;
+    setShowCardDropDownModal(false);
+  }, []);
 
-    const imageBodyTemplate = (rowData) => {
-        let ruta = `../../assets/${rowData.image}`;
-        console.log(ruta);
-        return <img src={`../../assets/${rowData.image}`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={rowData.image} className="product-image" />;
-    }
+  useOnClickOutside(CardDropDownModalRef, hideCardDropDown);
 
-    const priceBodyTemplate = (rowData) => {
-        return formatCurrency(rowData.price);
-    }
-
-    const header = (
-        <div className="table-header">
-            Productos
-            <Button icon="pi pi-refresh" />
-        </div>
-    );
-    const footer = `In total there are ${products ? products.length : 0} products.`;
-
-    console.log(products);
+  const itemTemplate = (data) => {
     return (
-        <div className="datatable-templating-demo">
-            <div className="card">
-                <DataTable value={products} header={header} footer={footer} responsiveLayout="scroll">
-                    <Column field="name" header="Name"></Column>
-                    <Column header="Image" body={imageBodyTemplate}></Column>
-                    <Column field="price" header="Price" body={priceBodyTemplate}></Column>
-                    <Column field="category" header="Category"></Column>
-                </DataTable>
-            </div>
+      <div className="product-item">
+        <img
+          src={`/assets/${data.image}`}
+          onError={(e) =>
+            (e.target.src =
+              "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
+          }
+          alt={data.name}
+        />
+        <div className="product-detail">
+          <div className="product-name">{data.name}</div>
+          <div className="product-description">{data.description}</div>
+          <Rating value={data.rating} readOnly cancel={false}></Rating>
+          <i className="pi pi-tag product-category-icon"></i>
+          <span className="product-category">{data.category}</span>
         </div>
+        <div className="product-action">
+          <span className="product-price">${data.price}</span>
+          <Button
+            icon="pi pi-shopping-cart"
+            label="Add to Cart"
+            disabled={data.inventoryStatus === "OUTOFSTOCK"}
+            onClick={() => setShowCardDropDownModal(!showCardDropDownModal)}
+          ></Button>
+          {/* <span
+            className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}
+          >
+            {data.inventoryStatus}
+          </span> */}
+        </div>
+      </div>
     );
-}
-                 
+  };
+
+  return (
+    <div className="datascroller-demo">
+      <div className="card">
+        <DataScroller
+          value={products}
+          itemTemplate={itemTemplate}
+          rows={5}
+          buffer={0.4}
+          header="List of Products"
+        />
+      </div>
+      <ModalContainer
+        show={showCardDropDownModal}
+        modalRef={CardDropDownModalRef}
+        component={<AddProduct />}
+        className={"modal-container cardDropDown"}
+      />
+    </div>
+  );
+};
+
 export default ProductList;
