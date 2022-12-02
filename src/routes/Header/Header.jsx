@@ -33,7 +33,7 @@ const Header = () => {
         <ul>
           <li>ceruiz@uamv.edu.ni</li>
           <li>
-            <img src={<BiCart/>} alt="shopping cart" />
+            <BiCart className='icon-cart'/>
           </li>
         </ul>
       </div>
