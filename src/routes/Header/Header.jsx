@@ -1,16 +1,19 @@
-import React, {useContext, useEffect, useState}from 'react'
-import './Header.scss'
-import Logo from '../../assets/logo.png'
-import AppContext from '../../context/AppContext';
-import {BiCart, BiCircle} from "react-icons/bi";
-// import MyOrder from '../../containers/MyOrder/MyOrder';
+import React, { useContext, useState } from "react";
+import Logo from "../../assets/logo.png";
+import AppContext from "../../context/AppContext";
+import ShoppingCart from "../../assets/icons/shopping-cart.png";
+
+import { Outlet } from "react-router-dom";
+import MyOrder from "../../containers/MyOrder/MyOrder";
+import "./Header.scss";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
-  const {state} = useContext(AppContext)
-  
-
-
+  const [toggleOrders, setToggleOrders] = useState(false);
+  const { state } = useContext(AppContext);
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
 
   return (
     <nav className="nav-bar">
@@ -40,20 +43,23 @@ const Header = () => {
       <div className="navbar-right">
         <ul>
           <li>ceruiz@uamv.edu.ni</li>
-          <li>
-            <div className="icons" onClick={setToggle(!toggle)}>
-              <BiCart className="icon-cart" />
-              <BiCircle className='circle-cart'/>
-            </div>
-            <div className='number-icon'>
-              {state.cart.length > 0 ? <div>{state.cart.length}</div> : null}
-            </div>
+          <li className="navbar-shopping-cart" onClick={handleToggle}>
+            <img
+              src={ShoppingCart}
+              alt="Shopping Cart"
+              onClick={() => setToggleOrders(!toggleOrders)}
+              className="shopping-cart-icon"
+            />
+            <span className="count-cart">
+              {state.cart.lenght > 0 && <div>{state.cart.lenght}</div>}
+            </span>
           </li>
         </ul>
       </div>
-      {/* {toggle && <MyOrder/>} */}
+      {toggle && <MyOrder />}
+      <Outlet />
     </nav>
   );
-}
+};
 
 export default Header;

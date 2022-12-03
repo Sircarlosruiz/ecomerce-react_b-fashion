@@ -10,11 +10,11 @@ function App() {
   const initialState = useInitialState();
   return (
     <AppContext.Provider value={initialState}>
-      <Layout/>
+      <Layout />
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home/>}/>
-          <Route exact path="*" element={<NotFound/>}/>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>
