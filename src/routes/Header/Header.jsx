@@ -1,12 +1,15 @@
-import React, {useContext, useState}from 'react'
+import React, {useContext, useEffect, useState}from 'react'
 import './Header.scss'
 import Logo from '../../assets/logo.png'
 import AppContext from '../../context/AppContext';
 import {BiCart, BiCircle} from "react-icons/bi";
+// import MyOrder from '../../containers/MyOrder/MyOrder';
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const {state} = useContext(AppContext)
+  
+
 
 
   return (
@@ -48,7 +51,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      {toggle && <MyOrder/>}
+      {/* {toggle && <MyOrder/>} */}
     </nav>
   );
 }
