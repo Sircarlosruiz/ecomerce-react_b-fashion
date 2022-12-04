@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback, useRef} from "react";
+import React, { useContext, useState, useCallback, useRef } from "react";
 import Logo from "../../assets/logo.png";
 import AppContext from "../../context/AppContext";
 import ShoppingCart from "../../assets/icons/shopping-cart.png";
@@ -18,7 +18,7 @@ const Header = () => {
     setToggle(!toggle);
   };
 
-  
+
   const CardDropDownModalRef = useRef();
 
   const hideCardDropDown = useCallback(({ target }) => {
@@ -60,7 +60,9 @@ const Header = () => {
             <img
               src={ShoppingCart}
               alt="Shopping Cart"
-              onClick={() => setToggleOrders(!toggleOrders)}
+              onClick={() => {
+                setToggleOrders(!toggleOrders);
+              }}
               className="shopping-cart-icon"
             />
           </li>
@@ -69,9 +71,15 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      
-      {toggle && <ModalContainer show={showCardDropDownModal} modalRef={CardDropDownModalRef} component={<MyOrder />} className={"modal-container cardDropDown"}/> 
-      }
+
+      {toggle && (
+        <ModalContainer
+          show={showCardDropDownModal}
+          modalRef={CardDropDownModalRef}
+          component={<MyOrder />}
+          className={"modal-container cardDropDown"}
+        />
+      )}
       <Outlet />
     </nav>
   );

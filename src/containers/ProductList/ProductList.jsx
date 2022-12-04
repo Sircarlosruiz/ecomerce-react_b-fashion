@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 import { DataScroller } from "primereact/datascroller";
 import { Button } from "primereact/button";
 import { ProductService } from "../../service/ProductService";
@@ -9,14 +14,15 @@ import { useOnClickOutside } from "../../components/Utils/helpers";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const [productsById, setProductsById] = useState([]);;
   const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
   const productService = new ProductService();
-
   const CardDropDownModalRef = useRef();
+
 
   useEffect(() => {
     productService.getAll().then((data) => setProducts(data));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   const hideCardDropDown = useCallback(({ target }) => {
     if (target.closest(".link")) return;
@@ -48,7 +54,9 @@ const ProductList = () => {
             icon="pi pi-shopping-cart"
             label="Add to Cart"
             disabled={data.inventoryStatus === "OUTOFSTOCK"}
-            onClick={() => setShowCardDropDownModal(!showCardDropDownModal)}
+            onClick={() => {
+              setShowCardDropDownModal(!showCardDropDownModal);
+            }}
           ></Button>
           {/* <span
             className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}
