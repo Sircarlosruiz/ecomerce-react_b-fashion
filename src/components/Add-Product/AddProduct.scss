@@ -1,0 +1,21 @@
+#form-add-product{
+    display: flex;
+    flex-direction: column;
+
+    .form-product{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0 0.5rem;
+            padding: 1rem;
+        }
+    }
+}
