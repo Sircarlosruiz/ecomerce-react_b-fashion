@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback, useRef} from "react";
 import Logo from "../../assets/logo.png";
 import AppContext from "../../context/AppContext";
 import ShoppingCart from "../../assets/icons/shopping-cart.png";
@@ -6,14 +6,27 @@ import ShoppingCart from "../../assets/icons/shopping-cart.png";
 import { Outlet } from "react-router-dom";
 import MyOrder from "../../containers/MyOrder/MyOrder";
 import "./Header.scss";
+import ModalContainer from "../../containers/ModalContainer/modal-container.component";
+import { useOnClickOutside } from "../../components/Utils/helpers";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [toggleOrders, setToggleOrders] = useState(false);
+  const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
   const { state } = useContext(AppContext);
   const handleToggle = () => {
     setToggle(!toggle);
   };
+
+  
+  const CardDropDownModalRef = useRef();
+
+  const hideCardDropDown = useCallback(({ target }) => {
+    if (target.closest(".link")) return;
+    setShowCardDropDownModal(false);
+  }, []);
+
+  useOnClickOutside(CardDropDownModalRef, hideCardDropDown);
 
   return (
     <nav className="nav-bar">
@@ -56,7 +69,9 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      {toggle && <MyOrder />}
+      
+      {toggle && <ModalContainer show={showCardDropDownModal} modalRef={CardDropDownModalRef} component={<MyOrder />} className={"modal-container cardDropDown"}/> 
+      }
       <Outlet />
     </nav>
   );
