@@ -50,9 +50,9 @@ const Header = () => {
               onClick={() => setToggleOrders(!toggleOrders)}
               className="shopping-cart-icon"
             />
-            <span className="count-cart">
-              {state.cart.lenght > 0 && <div>{state.cart.lenght}</div>}
-            </span>
+          </li>
+          <li className="count-cart">
+            {state.cart.lenght > 0 && <div>{state.cart.lenght}</div>}
           </li>
         </ul>
       </div>
