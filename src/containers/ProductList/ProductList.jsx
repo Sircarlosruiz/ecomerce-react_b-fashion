@@ -24,6 +24,8 @@ const ProductList = () => {
     productService.getAll().then((data) => setProducts(data));
   }, []);
 
+
+
   const hideCardDropDown = useCallback(({ target }) => {
     if (target.closest(".link")) return;
     setShowCardDropDownModal(false);
@@ -55,7 +57,7 @@ const ProductList = () => {
             label="Add to Cart"
             disabled={data.inventoryStatus === "OUTOFSTOCK"}
             onClick={() => {
-              setShowCardDropDownModal(!showCardDropDownModal);
+              /*setShowCardDropDownModal(!showCardDropDownModal);*/
             }}
           ></Button>
           {/* <span
