@@ -69,15 +69,12 @@ const Header = () => {
           </li>
         </ul>
       </div>
-
-      {toggle && (
-        <ModalContainer
-          show={showCardDropDownModal}
-          modalRef={CardDropDownModalRef}
-          component={<MyOrder />}
-          className={"modal-container cardDropDown"}
-        />
-      )}
+      <ModalContainer
+        show={showCardDropDownModal}
+        modalRef={CardDropDownModalRef}
+        component={<MyOrder />}
+        className={"modal-container cardDropDown"}
+      />
       <Outlet />
     </nav>
   );
