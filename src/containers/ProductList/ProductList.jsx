@@ -14,7 +14,6 @@ import { useOnClickOutside } from "../../components/Utils/helpers";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const [productsById, setProductsById] = useState([]);;
   const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
   const productService = new ProductService();
   const CardDropDownModalRef = useRef();
@@ -30,6 +29,8 @@ const ProductList = () => {
     if (target.closest(".link")) return;
     setShowCardDropDownModal(false);
   }, []);
+
+  
 
   useOnClickOutside(CardDropDownModalRef, hideCardDropDown);
 

@@ -1,13 +1,12 @@
-import React, { useContext } from 'react'
-import AppContext from '../../context/AppContext';
-import OrderItem from '../../components/OrderItem/OrderItem';
+import React from 'react'
+
 import './MyOrder.scss'
 // import AiOutlineArrowLeft from 'react-icons/ai'
 
 const MyOrder = () => {
     // const { state } = useContext(AppContext);
     return (
-      <aside className="MyOrder">
+      <div className="my-order">
         <div className="title-container">
           {/* <img src={<AiOutlineArrowLeft/>} alt="arrow" /> */}
           <p className="title">Mi orden</p>
@@ -24,7 +23,7 @@ const MyOrder = () => {
           </div>
           <button className="primary-button">Checkout</button>
         </div>
-      </aside>
+      </div>
     );
 }
 
