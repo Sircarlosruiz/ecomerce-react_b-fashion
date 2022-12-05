@@ -11,13 +11,11 @@ import { useOnClickOutside } from "../../components/Utils/helpers";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
-  const [toggleOrders, setToggleOrders] = useState(false);
   const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
   const { state } = useContext(AppContext);
   const handleToggle = () => {
     setToggle(!toggle);
   };
-
 
   const CardDropDownModalRef = useRef();
 
@@ -61,7 +59,7 @@ const Header = () => {
               src={ShoppingCart}
               alt="Shopping Cart"
               onClick={() => {
-                setToggleOrders(!toggleOrders);
+                setShowCardDropDownModal(!showCardDropDownModal);
               }}
               className="shopping-cart-icon"
             />
