@@ -1,7 +1,27 @@
 .my-order{
-    background-color: black;
-    color: white;
-    border: 1px solid red;
     height: 100px;
     width: 100px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .tittle-container{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .tittle{
+            font-size: 20px;
+        }
+    }
+
+    .my-order-content{
+        width: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
 }

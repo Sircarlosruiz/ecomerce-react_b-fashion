@@ -16,7 +16,7 @@ const AddProduct = ({ products, hideModal }) => {
     height: "auto",
     borderRadius: "50%",
   };
-  // console.table(products);
+  console.table(products);
   return (
     <div id="form-add-product" className="form-add-product">
       <form className="form-product">
