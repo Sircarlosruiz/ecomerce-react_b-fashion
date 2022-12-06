@@ -4,6 +4,7 @@ import Layout from "./containers/Layout/Layout";
 import AppContext from "./context/AppContext";
 import NotFound from './pages/NotFound/NotFound'
 import Home from './routes/Home/Home.jsx'
+import MyOrderList from "./containers/MyOrderList/MyOrderList";
 import useInitialState from "./hooks/useInitialState";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/MyOrderList" element={<MyOrderList/>} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
