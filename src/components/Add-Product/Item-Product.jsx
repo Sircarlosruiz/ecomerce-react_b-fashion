@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../assets/logo.png";
 
-const ItemProduct = ({ products, idx }) => {
+const ItemProduct = ({product, idx }) => {
 
   const photoStyle = {
     width: "13rem",
@@ -14,10 +14,10 @@ const ItemProduct = ({ products, idx }) => {
         <img src={logo} alt="Logo" style={photoStyle} />
       </div>
       <div className="form-group">
-        <span className="name-product">{products.name}</span>
-        <span className="description-product">hola{products.description}</span>
-        <span className="price-product">precio{products.price}</span>
-        <span className="description-product">Cantidad{products.cant}</span>
+        <span className="name-product">{product.name}</span>
+        <span className="description-product">hola{product.description}</span>
+        <span className="price-product">precio{product.price}</span>
+        <span className="description-product">Cantidad{product.cant}</span>
       </div>
     </form>
   );

@@ -12,10 +12,13 @@ import { useOnClickOutside } from "../../components/Utils/helpers";
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
-  const { state } = useContext(AppContext);
   const handleToggle = () => {
     setToggle(!toggle);
   };
+
+  const {
+    state: { cart },
+  } = useContext(AppContext);
 
   const CardDropDownModalRef = useRef();
 
@@ -23,6 +26,8 @@ const Header = () => {
     if (target.closest(".link")) return;
     setShowCardDropDownModal(false);
   }, []);
+
+  // console.log(state.cart.lenght);
 
   useOnClickOutside(CardDropDownModalRef, hideCardDropDown);
 
@@ -65,19 +70,17 @@ const Header = () => {
             />
           </li>
           <li className="count-cart">
-            {state.cart.lenght > 0 && <div>{state.cart.lenght}</div>}
+            {cart.length > 0 ? <div>{cart.length}</div> : null}
           </li>
         </ul>
       </div>
 
-      {toggle && (
-        <ModalContainer
-          show={showCardDropDownModal}
-          modalRef={CardDropDownModalRef}
-          component={<MyOrder />}
-          className={"modal-container cardDropDown"}
-        />
-      )}
+      <ModalContainer
+        show={showCardDropDownModal}
+        modalRef={CardDropDownModalRef}
+        component={<MyOrder/>}
+        className={"modal-container cardDropDown"}
+      />
       <Outlet />
     </nav>
   );

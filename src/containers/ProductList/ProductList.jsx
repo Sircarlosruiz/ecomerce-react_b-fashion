@@ -15,6 +15,7 @@ import { useOnClickOutside } from "../../components/Utils/helpers";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
+  // const [productSelected, setProductSelected] = useState([]);
   const productService = new ProductService();
   const CardDropDownModalRef = useRef();
 
@@ -22,6 +23,8 @@ const ProductList = () => {
   useEffect(() => {
     productService.getAll().then((data) => setProducts(data));
   }, []);
+
+
 
   const hideCardDropDown = useCallback(({ target }) => {
     if (target.closest(".link")) return;
@@ -56,6 +59,7 @@ const ProductList = () => {
             label="Add to Cart"
             disabled={data.inventoryStatus === "OUTOFSTOCK"}
             onClick={() => {
+              // console.log(productSelected);
               setShowCardDropDownModal(!showCardDropDownModal);
             }}
           ></Button>

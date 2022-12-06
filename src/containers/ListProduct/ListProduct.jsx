@@ -72,7 +72,9 @@ const ListProduct = () => {
               icon="pi pi-shopping-cart"
               label="Add to Cart"
               disabled={data.cant === "OUTOFSTOCK"}
-              onClick={() => setShowCardDropDownModal(!showCardDropDownModal)}
+              onClick={() => {
+                console.log(data);
+                setShowCardDropDownModal(!showCardDropDownModal)}}
             ></Button>
             {/* <span className={`product-badge status-${data.cant.toLowerCase()}`}>{data.cant}</span> */}
           </div>
