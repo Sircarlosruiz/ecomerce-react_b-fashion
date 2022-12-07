@@ -1,15 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { OrderList } from 'primereact/orderlist';
-import { ProductService } from '../../service/ProductService';
+import { OrderService } from '../../service/OrderService';
 import './MyOrderList';
 
 const MyOrderList = () => {
-    const [products, setProducts] = useState([]);
-    const productService = new ProductService();
+    const [order, setOrder] = useState([]);
+    const orderService = new OrderService();
 
     useEffect(() => {
-        productService.getAll().then(data => setProducts(data));
+        orderService.getAll().then(data => setOrder(data));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const itemTemplate = (item) => {
@@ -34,8 +34,8 @@ const MyOrderList = () => {
     return (
         <div className="orderlist-demo">
             <div className="card">
-                <OrderList value={products} header="List of Products" dragdrop listStyle={{height:'auto'}} dataKey="id"
-                    itemTemplate={itemTemplate} onChange={(e) => setProducts(e.value)}></OrderList>
+                <OrderList value={order} header="List of Orders" dragdrop listStyle={{height:'auto'}} dataKey="id"
+                    itemTemplate={itemTemplate} onChange={(e) => setOrder(e.value)}></OrderList>
             </div>
         </div>
     );
