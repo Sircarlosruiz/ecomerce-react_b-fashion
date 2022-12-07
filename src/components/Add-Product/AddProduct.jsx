@@ -16,7 +16,7 @@ const AddProduct = ({ products, hideModal }) => {
     height: "auto",
     borderRadius: "50%",
   };
-  console.table(products);
+  console.table(products[0]);
   return (
     <div id="form-add-product" className="form-add-product">
       <form className="form-product">
@@ -26,14 +26,14 @@ const AddProduct = ({ products, hideModal }) => {
         <div className="form-group">
           <span className="name-product">{products.name}</span>
           <span className="description-product">
-            hola{products.description}
+            {products.description}
           </span>
-          <span className="price-product">precio{products.price}</span>
-          <span className="description-product">Cantidad{products.cant}</span>
+          <span className="price-product">{products.price}</span>
+          <span className="description-product">{products.cant}</span>
         </div>
       </form>
       <div className="form-button-group">
-        <Button label="Borrar" className="p-button-danger" />
+        <Button label="Salir" className="p-button-danger" />
         <Button
           icon="pi pi-shopping-cart"
           label="Agregar al carrito"
