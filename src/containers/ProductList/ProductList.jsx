@@ -36,7 +36,7 @@ const ProductList = () => {
 
   const hangleAddClick = (item) => {
     addCartProduct([item], 1);
-    isCartOpen(true);
+    isCartOpen = true;
   };
 
   const renderListItem = (data) => {
@@ -103,7 +103,6 @@ const ProductList = () => {
               label="Add to Cart"
               disabled={data.inventoryStatus === "OUTOFSTOCK"}
               onClick={() => { 
-                console.log(data);
                 hangleAddClick(data);
               }}
             ></Button>
