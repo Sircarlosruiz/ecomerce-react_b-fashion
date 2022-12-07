@@ -3,13 +3,17 @@ import React from 'react';
 import './OrderItem.scss';
 
 const OrderItem = ({product}) => {
+	const {name, price, image} = product[0];
+	const cantidad = product[1];
+	console.log(name);
+	console.table(product);
     return (
         <div className="OrderItem">
 			<figure>
-				<img src={product.image} alt="imagen" />
+				<img src={image} alt="imagen" />
 			</figure>
-			<p>{product.name}</p>
-			<p>{product.price}</p>
+			<p>{name}</p>
+			<p>{price}</p>
 			{/* <AiFillCloseCircle/> */}
 		</div>
     );

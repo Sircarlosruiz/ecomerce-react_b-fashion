@@ -3,7 +3,7 @@ import Logo from "../../assets/logo.png";
 import ShoppingCart from "../../assets/icons/shopping-cart.png";
 
 import { Outlet } from "react-router-dom";
-import MyOrder from "../../containers/MyOrder/MyOrder";
+import OrderCard from "../../containers/OrderCard/OrderCard";
 import "./Header.scss";
 import ModalContainer from "../../containers/ModalContainer/modal-container.component";
 import { useOnClickOutside } from "../../components/Utils/helpers";
@@ -59,7 +59,6 @@ const Header = () => {
               src={ShoppingCart}
               alt="Shopping Cart"
               onClick={() => {
-
                 setShowCardDropDownModal(!showCardDropDownModal);
               }}
               className="shopping-cart-icon"
@@ -74,7 +73,7 @@ const Header = () => {
       <ModalContainer
         show={showCardDropDownModal}
         modalRef={CardDropDownModalRef}
-        component={<MyOrder cartProducts={cartProducts}/>}
+        component={<OrderCard cartProducts={cartProducts}/>}
         className={"modal-container cardDropDown"}
       />
       <Outlet />

@@ -1,13 +1,13 @@
-.my-order{
-    height: 100px;
-    width: 100px;
+#my-order{
     margin: 10px;
     padding: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
+    position: absolute;
+    right: 0;
+    border: 1px solid red;
     .tittle-container{
         display: flex;
         justify-content: space-between;

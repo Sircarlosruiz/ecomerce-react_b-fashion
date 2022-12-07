@@ -1,15 +1,7 @@
 import { createContext, useState } from "react";
 
-const newCartProducts = (cartProducts, product, qty) => {
-    const cartItem = cartProducts.find((item) => item.id === product.id);
-
-    if(cartItem){
-        return cartProducts.map((item) => 
-            item.id === product.id ? { ...item, quantity: qty } : item
-        );
-    }
-
-    return [...cartProducts, { ...product, quantity: qty }];
+const newCartProducts = (cartProducts, product, cant) => {
+    return [...cartProducts, { ...product, cantidad: cant }];
 };
 
 export const CartContext = createContext({
@@ -23,8 +15,8 @@ export const CartProvider = ({ children }) => {
 	const [isCartOpen, setIsCartOpen] = useState(false);
 	const [cartProducts, setCartProducts] = useState([]);
 
-	const addCartProduct = (product, qty = 1) =>
-		setCartProducts(newCartProducts(cartProducts, product, qty));
+	const addCartProduct = (product, cant = 1) =>
+		setCartProducts(newCartProducts(cartProducts, product, cant));
 
 	const value = {
 		isCartOpen,

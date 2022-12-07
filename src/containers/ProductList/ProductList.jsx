@@ -6,11 +6,10 @@ import { Rating } from "primereact/rating";
 import { CartContext } from "../../context/cart.context";
 import "./ProductList.scss";
 import { ProductsContext } from "../../context/products.context";
-import { logDOM } from "@testing-library/react";
 
 const ProductList = () => {
   const { products } = useContext(ProductsContext);
-  const { addCartProduct, isCartOpen } = useContext(CartContext);
+  const { addCartProduct } = useContext(CartContext);
   const [layout, setLayout] = useState("grid");
   const [sortKey, setSortKey] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
@@ -36,7 +35,6 @@ const ProductList = () => {
 
   const hangleAddClick = (item) => {
     addCartProduct([item], 1);
-    isCartOpen = true;
   };
 
   const renderListItem = (data) => {
