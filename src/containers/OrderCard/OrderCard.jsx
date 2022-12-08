@@ -22,7 +22,7 @@ const OrderCard = ({ cartProducts, isCartOpen }) => {
     <div className="my-order">
       <div id="title-container">
         {/* <img src={<AiOutlineArrowLeft/>} alt="arrow" /> */}
-        <p className="title">Mi orden</p>
+        <p id="title">Mi orden</p>
       </div>
       <div className="my-order-content">
         {cartProducts.map((product, index) => (

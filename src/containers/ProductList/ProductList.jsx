@@ -55,16 +55,19 @@ const ProductList = () => {
           <div className="product-list-detail">
             <div className="product-name">{data.name}</div>
             <div className="product-description">{data.description}</div>
-            <Rating value={data.rating} readOnly cancel={false}></Rating>
-            <i className="pi pi-tag product-category-icon"></i>
-            <span className="product-category">{data.category}</span>
+            {/* <Rating value={data.rating} readOnly cancel={false}></Rating> */}
+            {/* <i className="pi pi-tag product-category-icon"></i> */}
+            {/* <span className="product-category">{data.category}</span> */}
           </div>
           <div className="product-list-action">
             <span className="product-price">${data.price}</span>
             <Button
               icon="pi pi-shopping-cart"
-              label="Add to Cart"
+              label="Agregar al carrito"
               disabled={data.inventoryStatus === "OUTOFSTOCK"}
+              onClick={() => { 
+                hangleAddClick(data);
+              }}
             ></Button>
             {/* <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span> */}
           </div>
@@ -79,7 +82,7 @@ const ProductList = () => {
         <div className="product-grid-item card">
           <div className="product-grid-item-top">
             <div>
-              <i className="pi pi-tag product-category-icon"></i>
+              {/* <i className="pi pi-tag product-category-icon"></i> */}
               <span className="product-category">{data.category}</span>
             </div>
             {/* <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span> */}
@@ -101,7 +104,7 @@ const ProductList = () => {
             <span className="product-price">${data.price}</span>
             <Button
               icon="pi pi-shopping-cart"
-              label="Add to Cart"
+              label="Agregar al carrito"
               disabled={data.inventoryStatus === "OUTOFSTOCK"}
               onClick={() => { 
                 hangleAddClick(data);
@@ -130,7 +133,7 @@ const ProductList = () => {
             options={sortOptions}
             value={sortKey}
             optionLabel="label"
-            placeholder="Sort By Price"
+            placeholder="Orden por Precio"
             onChange={onSortChange}
           />
         </div>

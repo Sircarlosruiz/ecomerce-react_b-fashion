@@ -5,7 +5,7 @@ import "./MyOrderList.scss";
 
 const MyOrderList = () => {
   const { cartProducts } = useContext(CartContext);
-  console.log(cartProducts);
+  console.log(cartProducts[0]);
 
 
   const itemTemplate = (item) => {

@@ -4,7 +4,7 @@ import "./OrderItem.scss";
 
 const OrderItem = ({ product }) => {
   const { name, price, imagen } = product[0];
-  
+
   return (
     <div id="order-item">
       <figure>

@@ -1,13 +1,12 @@
 import React, { useState, useCallback, useRef, useContext } from "react";
 import Logo from "../../assets/logo.png";
 import ShoppingCart from "../../assets/icons/shopping-cart.png";
-
 import { Link, Outlet } from "react-router-dom";
 import OrderCard from "../../containers/OrderCard/OrderCard";
-import "./Header.scss";
 import ModalContainer from "../../containers/ModalContainer/modal-container.component";
 import { useOnClickOutside } from "../../components/Utils/helpers";
 import { CartContext } from "../../context/cart.context";
+import "./Header.scss";
 
 const Header = () => {
   const { cartProducts, isCartOpen } = useContext(CartContext);
