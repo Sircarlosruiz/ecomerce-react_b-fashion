@@ -3,12 +3,12 @@ import React from "react";
 import "./OrderItem.scss";
 
 const OrderItem = ({ product }) => {
-  const { name, price, image } = product[0];
+  const { name, price, imagen } = product[0];
   
   return (
     <div id="order-item">
       <figure>
-        <img src={`/assets/${image}`} alt="imagen" />
+        <img src={`/assets/${imagen}`} alt="imagen" />
       </figure>
       <p>{name}</p>
       <p>{price}</p>

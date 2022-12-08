@@ -4,12 +4,13 @@ import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { Rating } from "primereact/rating";
 import { CartContext } from "../../context/cart.context";
-import "./ProductList.scss";
 import { ProductsContext } from "../../context/products.context";
+import { getUrlImg } from "../../hooks/.helpers";
+import "./ProductList.scss";
 
 const ProductList = () => {
   const { products } = useContext(ProductsContext);
-  const { addCartProduct, setIsCartOpen ,isCartOpen } = useContext(CartContext);
+  const { addCartProduct, setIsCartOpen } = useContext(CartContext);
   const [layout, setLayout] = useState("grid");
   const [sortKey, setSortKey] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
@@ -38,12 +39,13 @@ const ProductList = () => {
     setIsCartOpen(true);
   };
 
+
   const renderListItem = (data) => {
     return (
       <div className="col-12">
         <div className="product-list-item">
           <img
-            src={`/assets/${data.image}`}
+            src={`assets/${data.imagen}`}
             onError={(e) =>
               (e.target.src =
                 "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
@@ -84,7 +86,7 @@ const ProductList = () => {
           </div>
           <div className="product-grid-item-content">
             <img
-              src={`/assets/${data.image}`}
+              src={getUrlImg(data.imagen)}
               onError={(e) =>
                 (e.target.src =
                   "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")

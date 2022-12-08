@@ -5,7 +5,7 @@ const newCartProducts = (cartProducts, product, cant) => {
 };
 
 const deleteItem = (cartProducts, product, cant) => {
-	return null
+  return null;
 };
 
 export const CartContext = createContext({
@@ -26,21 +26,21 @@ export const CartProvider = ({ children }) => {
     setCartProducts(newCartProducts(cartProducts, product, cant));
   };
 
-  const deleteCartProduct = (item, cant) =>{
-	setCartProducts();
+  const deleteCartProduct = (item, cant) => {
+    setCartProducts();
   };
 
-  const resetCartProduct = () => {
-	setCartProducts()
-  }
+  const resetCartProduct = (product, cant) => {
+    setCartProducts(deleteItem(cartProducts, product, cant));
+  };
 
   const value = {
     isCartOpen,
     setIsCartOpen,
     cartProducts,
     addCartProduct,
-	deleteCartProduct,
-	resetCartProduct,
+    deleteCartProduct,
+    resetCartProduct,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
