@@ -57,6 +57,12 @@
         color: #5a005a;
         font-weight: bold;
       }
+
+      .count-cart {
+        position: absolute;
+        top: 22px;
+        right: 34px;
+      }
     }
   }
   .modal-container {
@@ -85,8 +91,8 @@
       width: 30vw;
     }
 
-    top: 5.3rem;
-    right: 28rem;
+    top: 4.79rem;
+    right: 0;
     flex-flow: column;
     width: auto;
   }

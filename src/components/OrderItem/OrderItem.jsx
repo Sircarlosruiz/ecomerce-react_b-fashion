@@ -1,18 +1,20 @@
-import React from 'react';
+import React from "react";
 // import AiFillCloseCircle from 'react-icons/ai';
-import './OrderItem.scss';
+import "./OrderItem.scss";
 
-const OrderItem = ({product}) => {
-    return (
-        <div className="OrderItem">
-			<figure>
-				<img src={product.image} alt="bike" />
-			</figure>
-			<p>{product.name}</p>
-			<p>{product.price}</p>
-			{/* <AiFillCloseCircle/> */}
-		</div>
-    );
-}
+const OrderItem = ({ product }) => {
+  const { name, price, imagen } = product[0];
+
+  return (
+    <div id="order-item">
+      <figure>
+        <img src={`/assets/${imagen}`} alt="imagen" />
+      </figure>
+      <p>{name}</p>
+      <p>{price}</p>
+      {/* <AiFillCloseCircle/> */}
+    </div>
+  );
+};
 
 export default OrderItem;

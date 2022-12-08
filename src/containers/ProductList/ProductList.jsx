@@ -4,13 +4,13 @@ import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { Rating } from "primereact/rating";
 import { CartContext } from "../../context/cart.context";
-import "./ProductList.scss";
 import { ProductsContext } from "../../context/products.context";
-import { logDOM } from "@testing-library/react";
+import { getUrlImg } from "../../hooks/.helpers";
+import "./ProductList.scss";
 
 const ProductList = () => {
   const { products } = useContext(ProductsContext);
-  const { addCartProduct, isCartOpen } = useContext(CartContext);
+  const { addCartProduct, setIsCartOpen } = useContext(CartContext);
   const [layout, setLayout] = useState("grid");
   const [sortKey, setSortKey] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
@@ -36,15 +36,16 @@ const ProductList = () => {
 
   const hangleAddClick = (item) => {
     addCartProduct([item], 1);
-    isCartOpen(true);
+    setIsCartOpen(true);
   };
+
 
   const renderListItem = (data) => {
     return (
       <div className="col-12">
         <div className="product-list-item">
           <img
-            src={`/assets/${data.image}`}
+            src={`assets/${data.imagen}`}
             onError={(e) =>
               (e.target.src =
                 "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
@@ -54,16 +55,19 @@ const ProductList = () => {
           <div className="product-list-detail">
             <div className="product-name">{data.name}</div>
             <div className="product-description">{data.description}</div>
-            <Rating value={data.rating} readOnly cancel={false}></Rating>
-            <i className="pi pi-tag product-category-icon"></i>
-            <span className="product-category">{data.category}</span>
+            {/* <Rating value={data.rating} readOnly cancel={false}></Rating> */}
+            {/* <i className="pi pi-tag product-category-icon"></i> */}
+            {/* <span className="product-category">{data.category}</span> */}
           </div>
           <div className="product-list-action">
             <span className="product-price">${data.price}</span>
             <Button
               icon="pi pi-shopping-cart"
-              label="Add to Cart"
+              label="Agregar al carrito"
               disabled={data.inventoryStatus === "OUTOFSTOCK"}
+              onClick={() => { 
+                hangleAddClick(data);
+              }}
             ></Button>
             {/* <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span> */}
           </div>
@@ -78,14 +82,14 @@ const ProductList = () => {
         <div className="product-grid-item card">
           <div className="product-grid-item-top">
             <div>
-              <i className="pi pi-tag product-category-icon"></i>
+              {/* <i className="pi pi-tag product-category-icon"></i> */}
               <span className="product-category">{data.category}</span>
             </div>
             {/* <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span> */}
           </div>
           <div className="product-grid-item-content">
             <img
-              src={`/assets/${data.image}`}
+              src={getUrlImg(data.imagen)}
               onError={(e) =>
                 (e.target.src =
                   "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
@@ -94,16 +98,15 @@ const ProductList = () => {
             />
             <div className="product-name">{data.name}</div>
             <div className="product-description">{data.description}</div>
-            <Rating value={data.rating} readOnly cancel={false}></Rating>
+            {/* <Rating value={data.rating} readOnly cancel={false}></Rating> */}
           </div>
           <div className="product-grid-item-bottom">
             <span className="product-price">${data.price}</span>
             <Button
               icon="pi pi-shopping-cart"
-              label="Add to Cart"
+              label="Agregar al carrito"
               disabled={data.inventoryStatus === "OUTOFSTOCK"}
               onClick={() => { 
-                console.log(data);
                 hangleAddClick(data);
               }}
             ></Button>
@@ -130,7 +133,7 @@ const ProductList = () => {
             options={sortOptions}
             value={sortKey}
             optionLabel="label"
-            placeholder="Sort By Price"
+            placeholder="Orden por Precio"
             onChange={onSortChange}
           />
         </div>

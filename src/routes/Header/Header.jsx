@@ -1,16 +1,16 @@
-import React, {  useState, useCallback, useRef, useContext } from "react";
+import React, { useState, useCallback, useRef, useContext } from "react";
 import Logo from "../../assets/logo.png";
 import ShoppingCart from "../../assets/icons/shopping-cart.png";
-
-import { Outlet } from "react-router-dom";
-import MyOrder from "../../containers/MyOrder/MyOrder";
-import "./Header.scss";
+import ShoppingCartNotification from "../../assets/icons/shopping-cart-notification.png";
+import { Link, Outlet } from "react-router-dom";
+import OrderCard from "../../containers/OrderCard/OrderCard";
 import ModalContainer from "../../containers/ModalContainer/modal-container.component";
 import { useOnClickOutside } from "../../components/Utils/helpers";
 import { CartContext } from "../../context/cart.context";
+import "./Header.scss";
 
 const Header = () => {
-  const {cartProducts} = useContext(CartContext);
+  const { cartProducts, isCartOpen } = useContext(CartContext);
   const [toggle, setToggle] = useState(false);
   const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
   const handleToggle = () => {
@@ -29,11 +29,10 @@ const Header = () => {
   return (
     <nav className="nav-bar">
       <div className="navbar-left">
-        <img src={Logo} alt="Logo" className="nav-logo" />
+        <Link to={"/"}>
+          <img src={Logo} alt="Logo" className="nav-logo" />
+        </Link>
         <ul>
-          <li>
-            <a href="/">All</a>
-          </li>
           <li>
             <a href="/">Inicio</a>
           </li>
@@ -55,15 +54,27 @@ const Header = () => {
         <ul>
           <li>ceruiz@uamv.edu.ni</li>
           <li className="navbar-shopping-cart" onClick={handleToggle}>
-            <img
-              src={ShoppingCart}
-              alt="Shopping Cart"
-              onClick={() => {
-
-                setShowCardDropDownModal(!showCardDropDownModal);
-              }}
-              className="shopping-cart-icon"
-            />
+            {isCartOpen ? (
+              <img
+                src={ShoppingCartNotification}
+                alt="shopping-cart-notification-icon"
+                onClick={() => {
+                  // isCartOpen = true;
+                  setShowCardDropDownModal(!showCardDropDownModal);
+                }}
+                className="shopping-cart-icon"
+              />
+            ) : (
+              <img
+                src={ShoppingCart}
+                alt="Shopping Cart"
+                onClick={() => {
+                  // isCartOpen = true;
+                  setShowCardDropDownModal(!showCardDropDownModal);
+                }}
+                className="shopping-cart-icon"
+              />
+            )}
           </li>
           <li className="count-cart">
             {cartProducts.length > 0 ? <div>{cartProducts.length}</div> : null}
@@ -74,7 +85,9 @@ const Header = () => {
       <ModalContainer
         show={showCardDropDownModal}
         modalRef={CardDropDownModalRef}
-        component={<MyOrder cartProducts={cartProducts}/>}
+        component={
+          <OrderCard cartProducts={cartProducts} isCartOpen={isCartOpen} />
+        }
         className={"modal-container cardDropDown"}
       />
       <Outlet />
