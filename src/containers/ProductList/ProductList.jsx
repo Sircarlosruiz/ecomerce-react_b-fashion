@@ -9,7 +9,7 @@ import { ProductsContext } from "../../context/products.context";
 
 const ProductList = () => {
   const { products } = useContext(ProductsContext);
-  const { addCartProduct } = useContext(CartContext);
+  const { addCartProduct, setIsCartOpen ,isCartOpen } = useContext(CartContext);
   const [layout, setLayout] = useState("grid");
   const [sortKey, setSortKey] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
@@ -35,6 +35,7 @@ const ProductList = () => {
 
   const hangleAddClick = (item) => {
     addCartProduct([item], 1);
+    setIsCartOpen(true);
   };
 
   const renderListItem = (data) => {
@@ -92,7 +93,7 @@ const ProductList = () => {
             />
             <div className="product-name">{data.name}</div>
             <div className="product-description">{data.description}</div>
-            <Rating value={data.rating} readOnly cancel={false}></Rating>
+            {/* <Rating value={data.rating} readOnly cancel={false}></Rating> */}
           </div>
           <div className="product-grid-item-bottom">
             <span className="product-price">${data.price}</span>

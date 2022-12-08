@@ -2,16 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { OrderList } from 'primereact/orderlist';
 import { OrderService } from '../../service/OrderService';
-import './MyOrderList';
+import './MyOrderList.scss';
 
 const MyOrderList = () => {
-    const [order, setOrder] = useState([]);
-    const orderService = new OrderService();
-
-    useEffect(() => {
-        orderService.getAll().then(data => setOrder(data));
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+    const [order, setOrder] = useState(null);
     const itemTemplate = (item) => {
         return (
             <div className="product-item">
