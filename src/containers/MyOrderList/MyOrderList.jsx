@@ -1,18 +1,18 @@
 
 import React, { useContext } from 'react';
-import { ProductsContext } from '../../context/products.context.js'
+import { CartContext } from '../../context/cart.context'
 import { OrderList } from 'primereact/orderlist';
 import './MyOrderList';
 
 const MyOrderList = () => {
-    const [products] = useContext(ProductsContext);
-    console.log(products);
+    const {cartProducts} = useContext(CartContext);
+    console.log(cartProducts)
 
     const itemTemplate = (item) => {
         return (
             <div className="product-item">
                 <div className="image-container">
-                    <img src={`/assets/${item.image}`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={item.name} />
+                    <img src={`/assets/${item.imagen}`} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={item.name} />
                 </div>
                 <div className="product-list-detail">
                     <h5 className="mb-2">{item.name}</h5>
@@ -30,7 +30,7 @@ const MyOrderList = () => {
     return (
         <div className="orderlist-demo">
             <div className="card">
-                <OrderList value={products} header="List of Orders" dragdrop listStyle={{height:'auto'}} dataKey="id"
+                <OrderList value={cartProducts} header="List of Orders" dragdrop listStyle={{height:'auto'}} dataKey="id"
                     itemTemplate={itemTemplate} ></OrderList>
             </div>
         </div>
