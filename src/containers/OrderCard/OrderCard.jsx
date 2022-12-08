@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import OrderItem from "../../components/OrderItem/OrderItem";
-
 import "./OrderCard.scss";
-// import AiOutlineArrowLeft from 'react-icons/ai'
 
 const OrderCard = ({ cartProducts, isCartOpen }) => {
   // console.log(cartProducts[0]);
@@ -21,7 +19,6 @@ const OrderCard = ({ cartProducts, isCartOpen }) => {
   return (
     <div className="my-order">
       <div id="title-container">
-        {/* <img src={<AiOutlineArrowLeft/>} alt="arrow" /> */}
         <p id="title">Mi orden</p>
       </div>
       <div className="my-order-content">

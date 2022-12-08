@@ -27,7 +27,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const deleteCartProduct = (item, cant) => {
-    setCartProducts();
+    setCartProducts(deleteItem());
   };
 
   const resetCartProduct = (product, cant) => {
