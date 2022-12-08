@@ -1,16 +1,12 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { ProductsContext } from '../../context/products.context.js'
 import { OrderList } from 'primereact/orderlist';
-import { OrderService } from '../../service/OrderService';
 import './MyOrderList';
 
 const MyOrderList = () => {
-    const [order, setOrder] = useState([]);
-    const orderService = new OrderService();
-
-    useEffect(() => {
-        orderService.getAll().then(data => setOrder(data));
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    const [products] = useContext(ProductsContext);
+    console.log(products);
 
     const itemTemplate = (item) => {
         return (
@@ -34,8 +30,8 @@ const MyOrderList = () => {
     return (
         <div className="orderlist-demo">
             <div className="card">
-                <OrderList value={order} header="List of Orders" dragdrop listStyle={{height:'auto'}} dataKey="id"
-                    itemTemplate={itemTemplate} onChange={(e) => setOrder(e.value)}></OrderList>
+                <OrderList value={products} header="List of Orders" dragdrop listStyle={{height:'auto'}} dataKey="id"
+                    itemTemplate={itemTemplate} ></OrderList>
             </div>
         </div>
     );
