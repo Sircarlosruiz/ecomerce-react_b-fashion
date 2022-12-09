@@ -6,7 +6,7 @@ import { Button } from "primereact/button";
 
 import "./FormClient.scss";
 
-const FormUsuario = () => {
+const FormUsuario = ({Client}) => {
   const [nameUser, setNameUser] = useState("");
   const [secondName, setSecondName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -21,6 +21,10 @@ const FormUsuario = () => {
   const [ageCard, setAgeCard] = useState("");
   const [selectMethod, setSelectMethod] = useState("Tarjeta");
   const options = ["Cash", "Tarjeta"];
+
+  console.log('====================================');
+  console.log(Client[0]);
+  console.log('====================================');
 
 
   return (

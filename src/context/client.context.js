@@ -11,50 +11,50 @@ const deleteItem = (User, user) => {
   return null;
 };
 
-export const UserContext = createContext({
-  isUserOpen: false,
-  User: [],
-  setIsUserOpen: () => { },
-  addUser: () => { },
-  deleteUser: () => { },
+export const ClientContext = createContext({
+  isClientOpen: false,
+  Client: [],
+  setIsClientOpen: () => { },
+  addClient: () => { },
+  deleteClient: () => { },
   resetUser: () => { },
 });
 
-export const UserProvider = ({ children }) => {
-  const [isUserOpen, setIsUserOpen] = useState(false);
-  const [User, setUser] = useState([]);
+export const ClientProvider = ({ children }) => {
+  const [isClientOpen, setIsClientOpen] = useState(false);
+  const [Client, setClient] = useState([]);
 
   useEffect(() => {
     const getUser = async () => {
       const URL = "http://localhost:8181/api/client";
       const response = await axios.get(`${URL}/list`);
-      setUser(response.data);
+      setClient(response.data);
     };
 
     getUser();
   }, [])
 
   const addUser = (user) => {
-    setUser(newUser());
+    setClient(newUser());
 }
 
 const deleteUser = (item) => {
-  setUser(deleteItem());
+  setClient(deleteItem());
 };
 
 const resetUser = (user) => {
-  setUser(deleteItem(User, user));
+  setClient(deleteItem(Client, user));
 };
 
 
 const value = {
-  isUserOpen,
-  User,
+  isClientOpen,
+  Client,
+  setIsClientOpen,
   addUser,
-  setIsUserOpen,
   deleteUser,
   resetUser,
 };
 
-return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+return <ClientContext.Provider value={value}>{children}</ClientContext.Provider>;
   };

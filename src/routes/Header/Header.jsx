@@ -9,7 +9,7 @@ import { CartContext } from "../../context/cart.context";
 import "./Header.scss";
 
 const Header = () => {
-  const { cartProducts, isCartOpen, addCartProduct } = useContext(CartContext);
+  const { cartProducts, isCartOpen, addCartProduct, resetCartProduct } = useContext(CartContext);
   const [toggle, setToggle] = useState(false);
   const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
   const handleToggle = () => {
@@ -73,7 +73,7 @@ const Header = () => {
         show={showCardDropDownModal}
         modalRef={CardDropDownModalRef}
         component={
-          <OrderCard cartProducts={cartProducts} isCartOpen={isCartOpen} addCartProduct={addCartProduct} />
+          <OrderCard cartProducts={cartProducts} isCartOpen={isCartOpen} addCartProduct={addCartProduct} resetCartProduct={resetCartProduct}/>
         }
         className={"modal-container cardDropDown"}
       />

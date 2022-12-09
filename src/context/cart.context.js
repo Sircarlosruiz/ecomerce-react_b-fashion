@@ -1,6 +1,14 @@
 import { createContext, useState } from "react";
 
 const newCartProducts = (cartProducts, product, cant) => {
+  const cartItem = cartProducts.find((item) => item.codigoProducto === product.codigoProducto);
+
+	if (cartItem) {
+		return cartProducts.map((item) =>
+			item.id === product.id ? { ...item, cantidad: cant} : item
+		);
+  }
+
   
   return [...cartProducts, { ...product, cantidad: cant }];
 };
@@ -22,6 +30,8 @@ export const CartContext = createContext({
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
+
+  //sending cartProducts to My Order
 
   const addCartProduct = (product, cant = 1) => {
     setCartProducts(newCartProducts(cartProducts, product, cant));

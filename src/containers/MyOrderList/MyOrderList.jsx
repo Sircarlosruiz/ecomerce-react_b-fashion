@@ -9,9 +9,12 @@ import ItemCard from "./item-card";
 
 import "./MyOrderList.scss";
 import "../../styles/ButtonDemo.CSS";
+import { ClientContext } from "../../context/client.context";
 
 const MyOrderList = () => {
   const { cartProducts } = useContext(CartContext);
+  const { Client, addUser } = useContext(ClientContext);
+
   const [showCardDropDownModal, setShowCardDropDownModal] = useState(false);
 
   const CardDropDownModalRef = useRef();
@@ -55,7 +58,7 @@ const MyOrderList = () => {
       <ModalContainer
         show={showCardDropDownModal}
         modalRef={CardDropDownModalRef}
-        component={<FormClient />}
+        component={<FormClient Client={Client}/>}
         className={"modal-container cardDropDown"}
       />
       <Outlet />

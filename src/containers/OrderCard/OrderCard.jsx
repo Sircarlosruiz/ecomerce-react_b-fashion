@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import OrderItem from "../../components/OrderItem/OrderItem";
 import "./OrderCard.scss";
 
-const OrderCard = ({ cartProducts, isCartOpen, addCartProducts }) => {
+const OrderCard = ({
+  cartProducts,
+  isCartOpen,
+  addCartProducts,
+  resetCartProduct,
+}) => {
   // console.log(cartProducts[0]);
 
   const sumTotal = () => {
@@ -14,7 +19,11 @@ const OrderCard = ({ cartProducts, isCartOpen, addCartProducts }) => {
     return total;
   };
 
-  
+  const handlerClick = (item) => {
+    addCartProducts(item, item.cantidad);
+    resetCartProduct();
+  };
+
   return (
     <div className="my-order">
       <div id="title-container">
@@ -31,7 +40,12 @@ const OrderCard = ({ cartProducts, isCartOpen, addCartProducts }) => {
           <p>{isCartOpen ? sumTotal() : 0}</p>
         </div>
         <Link to={`/MyOrderList`}>
-          <button className="primary-button">Checkout</button>
+          <button
+            onClick={() => handlerClick(cartProducts)}
+            className="primary-button"
+          >
+            Checkout
+          </button>
         </Link>
       </div>
     </div>

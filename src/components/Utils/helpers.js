@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 
+export const filterDuplicatesInObjectByKey = (object) =>
+	Array.from(new Set(object.map((x) => x.key))).map((key) => object.find((a) => a.key === key));
+
 export const useOnClickOutside = (ref, handler) => {
 	useEffect(() => {
 		const listener = (event) => {
@@ -17,6 +20,15 @@ export const useOnClickOutside = (ref, handler) => {
 			document.removeEventListener("touchstart", listener);
 		};
 	}, [ref, handler]);
+};
+
+export const shuffleArray = (array) => {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		const temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
 };
 
 export const getUrlImg = (name) => {
