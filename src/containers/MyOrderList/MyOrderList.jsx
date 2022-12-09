@@ -1,11 +1,21 @@
 import React, { useContext } from "react";
 import { OrderList } from "primereact/orderlist";
 import { CartContext } from '../../context/cart.context'
+import { InputMask } from 'primereact/inputmask';
+
 import "./MyOrderList.scss";
+import { useState } from "react";
 
 const MyOrderList = () => {
   const { cartProducts } = useContext(CartContext);
+  const [ inputName, setInputName] = useState("");
   console.log(cartProducts[0]);
+
+
+
+  const handlerClickFormUser = () =>{
+    
+  }
 
 
   const itemTemplate = (item) => {
@@ -15,8 +25,8 @@ const MyOrderList = () => {
           <img
             src={`/assets/${item.imagen}`}
             onError={(e) =>
-              (e.target.src =
-                "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
+            (e.target.src =
+              "https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png")
             }
             alt={item.name}
           />
@@ -34,7 +44,7 @@ const MyOrderList = () => {
     );
   };
 
-  return (
+  return (<>
     <div className="orderlist-demo">
       <div className="card">
         <OrderList
@@ -47,6 +57,17 @@ const MyOrderList = () => {
         ></OrderList>
       </div>
     </div>
+    <div className="usuario-card">
+      <div className="input-user-name">
+        <div className="p-fluid formgrid grid">
+          <div className="field col-12 md:col-4">
+            <label htmlFor="basic">Nombre</label>
+            <InputMask id="basic" mask="Tu nombre aquí" value={cartProducts} placeholder="Tu nombe aquí" onChange={(e) => setInputName(e.value)}></InputMask>
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
   );
 };
 

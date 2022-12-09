@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 
 const newCartProducts = (cartProducts, product, cant) => {
+  
   return [...cartProducts, { ...product, cantidad: cant }];
 };
 
