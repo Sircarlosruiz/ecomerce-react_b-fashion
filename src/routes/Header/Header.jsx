@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useContext } from "react";
 import Logo from "../../assets/logo.png";
 import ShoppingCart from "../../assets/icons/shopping-cart.png";
-import ShoppingCartNotification from "../../assets/icons/shopping-cart-notification.png";
 import { Link, Outlet } from "react-router-dom";
 import OrderCard from "../../containers/OrderCard/OrderCard";
 import ModalContainer from "../../containers/ModalContainer/modal-container.component";
@@ -27,7 +26,7 @@ const Header = () => {
   useOnClickOutside(CardDropDownModalRef, hideCardDropDown);
 
   return (
-    <nav className="nav-bar">
+    <nav id="nav-bar" className="nav-bar">
       <div className="navbar-left">
         <Link to={"/"}>
           <img src={Logo} alt="Logo" className="nav-logo" />
@@ -54,27 +53,15 @@ const Header = () => {
         <ul>
           <li>ceruiz@uamv.edu.ni</li>
           <li className="navbar-shopping-cart" onClick={handleToggle}>
-            {isCartOpen ? (
-              <img
-                src={ShoppingCartNotification}
-                alt="shopping-cart-notification-icon"
-                onClick={() => {
-                  // isCartOpen = true;
-                  setShowCardDropDownModal(!showCardDropDownModal);
-                }}
-                className="shopping-cart-icon"
-              />
-            ) : (
-              <img
-                src={ShoppingCart}
-                alt="Shopping Cart"
-                onClick={() => {
-                  // isCartOpen = true;
-                  setShowCardDropDownModal(!showCardDropDownModal);
-                }}
-                className="shopping-cart-icon"
-              />
-            )}
+            <img
+              src={ShoppingCart}
+              alt="shopping-cart-notification-icon"
+              onClick={() => {
+                // isCartOpen = true;
+                setShowCardDropDownModal(!showCardDropDownModal);
+              }}
+              className="shopping-cart-icon"
+            />
           </li>
           <li className="count-cart">
             {cartProducts.length > 0 ? <div>{cartProducts.length}</div> : null}

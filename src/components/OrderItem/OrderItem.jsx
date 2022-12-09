@@ -1,5 +1,5 @@
 import React from "react";
-// import AiFillCloseCircle from 'react-icons/ai';
+import close_icon from "../../assets/icons/icon_close.png";
 import "./OrderItem.scss";
 
 const OrderItem = ({ product }) => {
@@ -8,11 +8,11 @@ const OrderItem = ({ product }) => {
   return (
     <div id="order-item">
       <figure>
-        <img src={`/assets/${imagen}`} alt="imagen" />
+        <img src={`/assets/${imagen}`} alt="imagen" className="item-img" />
       </figure>
       <p>{name}</p>
       <p>{price}</p>
-      {/* <AiFillCloseCircle/> */}
+      <img src={close_icon} alt="close icon" classname="close-icon" />
     </div>
   );
 };
