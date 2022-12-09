@@ -1,31 +1,35 @@
 import React, { useContext, useEffect, useState } from "react";
-import { OrderList } from "primereact/orderlist";
 import { CartContext } from "../../context/cart.context";
 import "./MyOrderList.scss";
 import ItemCard from "./item-card";
 
 const MyOrderList = () => {
   const { cartProducts } = useContext(CartContext);
-
+  const [orderList, setOrderList] = useState([]);
+  const newOrderList = cartProducts.map((x) => {
+    console.log('====================================');
+    console.log(x);
+    console.log('====================================');
+    return { product: x.product, cant: x.cant };
+  });
+  // useEffect(() => {
+  //   const filterOrderList = newOrderList.map((x) => {
+  //     console.log('====================================');
+  //     console.log(x);
+  //     console.log('====================================');
+  //     return { product: x.product, cant: x.cant };
+  //   });
+  //   setOrderList(filterOrderList);
+  // }, [cartProducts]);
 
   return (
-    <div className="orderlist">
-    {cartProducts.map((idx, item) => {
-      <ItemCard key={idx} product={item}/>
-    })}
-    </div>
-    <div className="usuario-card">
-      <div className="input-user-name">
-        <div className="p-fluid formgrid grid">
-          <div className="field col-12 md:col-4">
-            <label htmlFor="basic">Nombre</label>
-            <InputMask id="basic" mask="Tu nombre aquí" value={cartProducts} placeholder="Tu nombe aquí" onChange={(e) => setInputName(e.value)}></InputMask>
-          </div>
-        </div>
+    <>
+      <div className="orderlist">
+        {orderList.map((product, cant, idx) => (
+          <ItemCard product={product} cant={cant} key={idx} />
+        ))}
       </div>
-    </div>
-  </>
+    </>
   );
-};
-
+}
 export default MyOrderList;
