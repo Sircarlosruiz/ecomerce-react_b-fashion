@@ -2,21 +2,16 @@ import React from 'react'
 import './MyOrderList.scss'
 
 const ItemCard = ({product, cant}) => {
-    // console.log('====================================');
-    // console.table(product);
-    // console.log('====================================');
-    console.log('====================================');
-    console.log(product);
-    console.log('====================================');
+    const {name, description, price, imagen} = product[0];
 
     return (
         <div className='product-card'>
-        {/* <img src={imagen}/> */}
+        <img src={`/assets/${imagen}`} alt={name}/>
         <div className='info-product'>
-            {/* <span>{nombre}</span> */}
-            {/* <p>{nombre}</p> */}
-            <span>Precio</span>
-            <button>Boton</button>
+            <span className='product-name'>{name}</span>
+            <span className='product-description'>{description}</span>
+            <span className='product-price'>{price}</span>
+            <button className='delete-button'>Borrar</button>
         </div>
         </div>
     );
