@@ -1,8 +1,11 @@
 import React from 'react'
+import errorImg from  '../../assets/404error.jpg'
 
 const NotFound = () => {
     return (
-        <>404</>
+        <div className='error-card'>
+        <img src={errorImg}/>
+        </div>
     );
 }
 

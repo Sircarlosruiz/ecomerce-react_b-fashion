@@ -1,0 +1,34 @@
+#usuario-card{
+    display: flex;
+    width: 53rem;
+    height: 35rem;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 10px;
+    margin: 10px;
+    
+    #form-info-client{
+        height: 100%;
+        div{
+            display: flex;
+            flex-direction: column;
+            margin: 2rem 0;
+        }
+    }
+
+    .form-payment-method{
+        height: 100%;
+
+        div{
+            margin: 2rem 0;
+        }
+    }
+
+}
+#button-usuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

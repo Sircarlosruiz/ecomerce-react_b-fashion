@@ -58,7 +58,7 @@ const Header = () => {
               alt="shopping-cart-notification-icon"
               onClick={() => {
                 // isCartOpen = true;
-                setShowCardDropDownModal(!showCardDropDownModal);
+              setShowCardDropDownModal(!showCardDropDownModal);
               }}
               className="shopping-cart-icon"
             />

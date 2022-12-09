@@ -2,10 +2,9 @@ import React, { useState, useContext } from "react";
 import { DataView, DataViewLayoutOptions } from "primereact/dataview";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
-import { Rating } from "primereact/rating";
 import { CartContext } from "../../context/cart.context";
 import { ProductsContext } from "../../context/products.context";
-import { getUrlImg } from "../../hooks/.helpers";
+import { getUrlImg } from "../../components/Utils/helpers.js";
 import "./ProductList.scss";
 
 const ProductList = () => {

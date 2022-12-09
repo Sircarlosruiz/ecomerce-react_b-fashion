@@ -1,5 +1,9 @@
 import React from 'react'
-import './MyOrderList.scss'
+import { Button } from 'primereact/button';
+
+import './MyOrderList.scss';
+import '../../styles/ButtonDemo.CSS';
+
 
 const ItemCard = ({product, cant}) => {
     const {name, description, price, imagen} = product[0];
@@ -11,7 +15,8 @@ const ItemCard = ({product, cant}) => {
             <span className='product-name'>{name}</span>
             <span className='product-description'>{description}</span>
             <span className='product-price'>{price}</span>
-            <button className='delete-button'>Borrar</button>
+            <Button label="Borrar" className="p-button-raised p-button-danger p-button-text" />
+
         </div>
         </div>
     );
