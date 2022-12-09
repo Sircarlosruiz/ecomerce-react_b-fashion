@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import OrderItem from "../../components/OrderItem/OrderItem";
 import "./OrderCard.scss";
 
-const OrderCard = ({ cartProducts, isCartOpen }) => {
+const OrderCard = ({ cartProducts, isCartOpen, addCartProducts }) => {
   // console.log(cartProducts[0]);
 
   const sumTotal = () => {
@@ -14,8 +14,7 @@ const OrderCard = ({ cartProducts, isCartOpen }) => {
     return total;
   };
 
-  // console.log(isCartOpen);
-
+  
   return (
     <div className="my-order">
       <div id="title-container">
