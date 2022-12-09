@@ -1,24 +1,48 @@
-import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
+
+const newUser = (User, user) => {
+  
+  return [...User, { ...user}];
+};
+
+const deleteItem = (User, user) => {
+  return null;
+};
 
 export const UserContext = createContext({
-  user: [],
+  isUserOpen: false,
+  User: [],
+  total: 0,
+  setIsUserOpen: () => {},
+  addUser: () => {},
+  deleteUser: () => {},
+  resetUser: () => {},
 });
 
-export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState([]);
-  const value = { user };
+export const UserContextProvider = ({ children }) => {
+  const [isUserOpen, setIsUserOpen] = useState(false);
+  const [User, setUser] = useState([]);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      const URL = "http://localhost:8181/api/product";
-      const response = await axios.get(`${URL}/list`);
-      setUser(response.data);
-    };
+  const addUser = (user) => {
+    setUser(newUser(User, user));
+  };
 
-    getUserData();
-  }, []);
+  const deleteUser = (item) => {
+    setUser(deleteItem());
+  };
 
+  const resetUser = (user) => {
+    setUser(deleteItem(User, user));
+  };
+
+  const value = {
+    isUserOpen,
+    setIsUserOpen,
+    User,
+    addUser,
+    deleteUser,
+    resetUser,
+  };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
