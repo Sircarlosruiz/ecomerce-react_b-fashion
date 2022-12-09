@@ -13,10 +13,10 @@ export const CartContext = createContext({
   isCartOpen: false,
   cartProducts: [],
   total: 0,
-  setIsCartOpen: () => {},
-  addCartProduct: () => {},
-  deleteCartProduct: () => {},
-  resetCartProduct: () => {},
+  setIsCartOpen: () => { },
+  addCartProduct: () => { },
+  deleteCartProduct: () => { },
+  resetCartProduct: () => { },
 });
 
 export const CartProvider = ({ children }) => {
@@ -24,24 +24,19 @@ export const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
 
   useEffect(() => {
+    var URL = "http://localhost:8181/api/client";
     const getCartProducts = async () => {
-      const URL = "http://localhost:8181/api/cart";
       const response = await axios.get(`${URL}/list`);
       getCartProducts(response.data);
-      
     };
-    getCartProducts();
-  }, [])
 
-  useEffect(() => {
     const postCartProducts = async () => {
-      const URL = "http://localhost:8181/api/cart";
-      const sent = await axios.post(`${URL}/list`);
+      const sent = await axios.post(`${URL}/save`);
       setCartProducts(sent.data);
-      
     };
-    postCartProducts();
-  }, [])
+      getCartProducts();
+      postCartProducts();
+   },[])
 
   const addCartProduct = (product, cant = 1) => {
     setCartProducts(newCartProducts(cartProducts, product, cant));

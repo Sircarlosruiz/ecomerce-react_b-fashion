@@ -19,18 +19,20 @@ export const ClientContext = createContext({
   resetClient: () => { },
 });
 
+const postClient = async () => {
+  const sent = await axios.post(`${URL}/save`);
+  postClient(sent.data);
+};
+
 export const ClientProvider = ({ children }) => {
   const [isClientOpen, setIsClientOpen] = useState(false);
   const [Client, setClient] = useState([]);
-
+  
   useEffect(() => {
+    var URL = "http://localhost:8181/api/client";
     const getClient = async () => {
-      const URL = "http://localhost:8181/api/client";
       const response = await axios.get(`${URL}/list`);
-      console.log(response.data);
       setClient(response.data);
-      //setClient(sent.data);
-      
     };
 
     getClient();
@@ -56,6 +58,7 @@ const value = {
   setIsClientOpen,
   deleteClient,
   resetClient,
+
 };
 
 return <ClientContext.Provider value={value}>{children}</ClientContext.Provider>;
